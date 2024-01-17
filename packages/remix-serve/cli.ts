@@ -149,6 +149,10 @@ async function run() {
     : app.listen(port, onListen);
 
   ["SIGTERM", "SIGINT"].forEach((signal) => {
-    process.once(signal, () => server?.close(console.error));
+    console.log(`SIGNAL PROCESSING ONCE FOR ${signal}`)
+    process.once(signal, () => {
+      console.log(`PROCESSING ONCE IN PROCESS ONCE FUNCTION PID: ${process}`)
+      server?.close(console.error)
+    });
   });
 }
