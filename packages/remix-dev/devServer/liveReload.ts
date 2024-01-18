@@ -81,7 +81,10 @@ export async function liveReload(
 
   let heartbeat = setInterval(broadcast, 60000, { type: "PING" });
 
-  exitHook(() => clean(config));
+  exitHook(() => {
+    log(`COUREY EXIT HOOK FUNCTION`)
+    clean(config)
+  });
   return async () => {
     wss.close();
     clearInterval(heartbeat);
