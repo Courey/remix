@@ -98,7 +98,8 @@ export let serve = async (
       )}`;
     let newAppServer = execa
       .command(cmd, {
-        stdio: "pipe",
+        stdout: "pipe",
+        stdin: "inherit",
         env: {
           NODE_ENV: "development",
           PATH:
